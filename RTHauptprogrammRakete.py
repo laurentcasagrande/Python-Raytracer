@@ -26,7 +26,7 @@ u0, v0 = -3, 3
 #Ist u1=-u0, so ist das zentrum in der Mitte des Bildes
 u1, v1 = -u0, -zA
 #Anzahl Pixel in der Horizontalen
-hor = 300
+hor = 600
 #Einheit wird berechnet
 Einheit = (u1 - u0) / hor
 #Pixelanzahl ver wird berechnet:
@@ -49,7 +49,7 @@ M1 = [np.array([0.1,0.1,1.0]),0.3,0.7,0.6,10]
 M2 = [np.array([1,0.85,0.3]),0.4,0.6,0.3,5]
 M3 = [np.array([1,1,1]),0.4,0.6,0,0]
 
-K1 = Kugel(Vektor3(0,4,2.5),2.5,[np.array([1.00,0.85,0.3]),0.2,0.8,0.95,120])
+K1 = Kugel(Vektor3(0,4,2.5),2.5,[np.array([1.00,0.85,0.3]),0.2,0.8,0,0])
 K2 = Kugel(Vektor3(-0.7,1,0.9),0.9,[np.array([0.10,0.33,0.70]),0.3,0.7,0.6,10])
 K3 = Kugel(Vektor3(1.0,1.5,0.7),0.7,[np.array([0.70,0.20,0.20]),0.4,0.6,0.3,5])
 
@@ -63,7 +63,7 @@ E1 = Ebene(Vektor3(0,0,0),Vektor3(0,0,1), M1)
 
 Szene = [E1]
 
-for i in range(1):
+for i in range(36):
     r = 1
     K1 = Kugel(Vektor3(0,4,r+i/10),r,M3)
     Szene.append(K1)
@@ -71,9 +71,9 @@ for i in range(1):
 
 
 
-for i in range(18):
-    K2 = Kugel(Vektor3(1.25,4,1),1,M2).Rotiert(0, 4, i*10)
-    K3 = Kugel(Vektor3(-1.25,4,1),1,M2).Rotiert(0, 4, i*10)
+for i in range(36):
+    K2 = Kugel(Vektor3(1.25,4,1),1,M2).Rotiert(0, 4, i*5)
+    K3 = Kugel(Vektor3(-1.25,4,1),1,M2).Rotiert(0, 4, i*5)
     
     frameszene = []
     for obj in Szene:
@@ -83,8 +83,8 @@ for i in range(18):
     frameszene.append(K3)
     
     #Bild speichern. Als png oder auch als eps-Datei möglich.
-    Speichern = False
-    Dateiname = "DreiKreisRaytracing.png"
+    Speichern = True
+    Dateiname = f"Rakete/Rakete{i}.png"
     Dotspi = 100
     ######## Ende der Eingabe ####################################
     
