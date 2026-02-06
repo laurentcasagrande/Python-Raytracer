@@ -125,7 +125,7 @@ def ImSchatten(Punkt, Lichtposition, Szene, delta = 0.01):
     der Lichtquelle verschoben.
     Wählt man delta = 0, so kann man starke Schatten-Akne beobachten!
     """
-    return False
+
     # Vektor vlicht zum Licht hin.
     vlicht = Normieren( Lichtposition - Punkt )
     # Startpunkt leicht in Richtung Lichtquelle schieben,
@@ -168,7 +168,7 @@ def BerechneFarbe(p, v, Auge, Szene, Hintergrundfarbe, AmbientesLicht, Lichterli
                 b = Normieren((-1)*v)
                 h = Normieren(l+b)
                 nh = sp(nvek,h)
-
+                nl = sp(nvek, l)
 
                 if nl > 0:
                     farbe += Fobj*kd*nl*L.gint*L.frb

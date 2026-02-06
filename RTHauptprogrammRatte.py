@@ -27,7 +27,7 @@ u0, v0 = -3, 3
 #Ist u1=-u0, so ist das zentrum in der Mitte des Bildes
 u1, v1 = -u0, -zA
 #Anzahl Pixel in der Horizontalen
-hor = 300
+hor = 600
 #Einheit wird berechnet
 Einheit = (u1 - u0) / hor
 #Pixelanzahl ver wird berechnet:
@@ -68,10 +68,10 @@ Szene = [E1]
 
 
 
-for i in range(36):
+for i in range(33):
     #.Rotiert(0, 4, i*10)
 
-    theta = i * 45.1
+    theta = i * 11
 
     cost = np.cos(theta/180*math.pi)
     sint = np.sin(theta/180*math.pi)
@@ -87,7 +87,7 @@ for i in range(36):
 
     
     #Bild speichern. Als png oder auch als eps-Datei möglich.
-    Speichern = False
+    Speichern = True
     Dateiname = f"Ratte/Ratte{i}.png"
     Dotspi = 100
     ######## Ende der Eingabe ####################################
