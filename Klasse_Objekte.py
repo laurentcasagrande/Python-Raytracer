@@ -55,7 +55,6 @@ class Kugel:
         ty = ZPunkt.y - achsey
         tz = ZPunkt.z
         
-        
         newx = achsex + tx * cost - ty * sint
         newy = achsey + tx * sint + ty * cost
         newz = tz
@@ -132,9 +131,9 @@ class Dreieck:
                     p2s=Normieren(p2-s)
                     p3s=Normieren(p3-s)
 
-                    winkel1=arccos(sp(p1s,p2s))
-                    winkel2=arccos(sp(p3s,p2s))
-                    winkel3=arccos(sp(p1s,p3s))
+                    winkel1=np.arccos(sp(p1s,p2s))
+                    winkel2=np.arccos(sp(p3s,p2s))
+                    winkel3=np.arccos(sp(p1s,p3s))
 
                     winkel_total=winkel1+winkel2+winkel3-2*math.pi
 
@@ -148,3 +147,47 @@ class Dreieck:
     
     def Normalenvektor(self,p):
         return Normieren(self.normale)
+    
+    def Rotiert(self, achsex, achsey, theta):
+        
+        aPunkt = self.a
+        bPunkt = self.b
+        cPunkt = self.c
+        
+
+        cost = np.cos(theta/180*math.pi)
+        sint = np.sin(theta/180*math.pi)
+        
+        tx = aPunkt.x - achsex
+        ty = aPunkt.y - achsey
+        tz = aPunkt.z
+        
+        newx = achsex + tx * cost - ty * sint
+        newy = achsey + tx * sint + ty * cost
+        newz = tz
+        
+        self.a = Vektor3(newx, newy, newz)
+        
+        tx = bPunkt.x - achsex
+        ty = bPunkt.y - achsey
+        tz = bPunkt.z
+        
+        newx = achsex + tx * cost - ty * sint
+        newy = achsey + tx * sint + ty * cost
+        newz = tz
+        
+        self.b = Vektor3(newx, newy, newz)
+        
+        tx = cPunkt.x - achsex
+        ty = cPunkt.y - achsey
+        tz = cPunkt.z
+        
+        newx = achsex + tx * cost - ty * sint
+        newy = achsey + tx * sint + ty * cost
+        newz = tz
+        
+        self.c = Vektor3(newx, newy, newz)
+        self.normale=vp(self.b-self.a,self.c-self.a)
+        
+        return self
+        
