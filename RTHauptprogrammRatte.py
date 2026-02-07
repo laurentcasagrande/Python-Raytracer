@@ -9,7 +9,7 @@ from Bild_DarstellenSpeichern import *
 import Ratte
 
 #Hintergrundfarbe
-Hintergrundfarbe = grau
+Hintergrundfarbe = np.array([26/255,24/255,27/255])
 
 #Augpunkt sollte so gesetzt werden, dass auge-zentrum normal ist zur Bildebene.
 #Und auch nicht zu nah an der Bildebene. yA = -6 ist eine gute Wahl.
@@ -68,27 +68,24 @@ Szene = [E1]
 
 
 
-for i in range(33):
+for i in range(72):
     #.Rotiert(0, 4, i*10)
 
-    theta = i * 11
-
-    cost = np.cos(theta/180*math.pi)
-    sint = np.sin(theta/180*math.pi)
+    theta = 5
     
     frameszene = []
     for obj in Szene:
         frameszene.append(obj)
     
-    for obj in Ratte.Ratte:
-        frameszene.append(obj.Rotiert(Ratte.m_Ratte.x, Ratte.m_Ratte.y, theta))
+    for face in Ratte.Ratte:
+        frameszene.append(face.Rotiert(Ratte.m_Ratte.x, Ratte.m_Ratte.y, theta))
         
         
 
     
     #Bild speichern. Als png oder auch als eps-Datei möglich.
     Speichern = True
-    Dateiname = f"Ratte/Ratte{i}.png"
+    Dateiname = f"Ratte2/Ratte{i}.png"
     Dotspi = 100
     ######## Ende der Eingabe ####################################
     
@@ -104,5 +101,5 @@ for i in range(33):
             frb = BerechneFarbe(Auge, vrichtung, Auge, frameszene,
                                 Hintergrundfarbe, AmbientesLicht, Lichterliste)
             bild_matrix[i,j] = np.clip(frb, 0, 1)
-    print("Zeitdauer für die Berechnung: ", time.time() - t0)
+    print(f"{i+1}/72: Zeitdauer für die Berechnung: ", time.time() - t0)
     Bild_DarstellenSpeichern(bild_matrix, hor, ver, Dotspi, Speichern, Dateiname)
