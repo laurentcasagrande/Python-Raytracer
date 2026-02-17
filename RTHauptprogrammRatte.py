@@ -68,7 +68,7 @@ Szene = [E1]
 
 
 
-for i in range(72):
+for ind in range(72):
     #.Rotiert(0, 4, i*10)
 
     theta = 5
@@ -85,7 +85,7 @@ for i in range(72):
     
     #Bild speichern. Als png oder auch als eps-Datei möglich.
     Speichern = True
-    Dateiname = f"Ratte2/Ratte{i}.png"
+    Dateiname = f"Ratte/Ratte{ind}.png"
     Dotspi = 100
     ######## Ende der Eingabe ####################################
     
@@ -101,5 +101,5 @@ for i in range(72):
             frb = BerechneFarbe(Auge, vrichtung, Auge, frameszene,
                                 Hintergrundfarbe, AmbientesLicht, Lichterliste)
             bild_matrix[i,j] = np.clip(frb, 0, 1)
-    print(f"{i+1}/72: Zeitdauer für die Berechnung: ", time.time() - t0)
+    print(f"{ind+1}/72: Zeitdauer für die Berechnung: ", time.time() - t0)
     Bild_DarstellenSpeichern(bild_matrix, hor, ver, Dotspi, Speichern, Dateiname)
