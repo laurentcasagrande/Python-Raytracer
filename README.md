@@ -2,7 +2,7 @@
 
 A small, educational ray tracer written in Python. It builds 3D scenes from geometric primitives, traces rays from a virtual camera, and uses ambient, diffuse, and specular lighting with shadows to render images. The repository also includes two scripts that generate frames for simple animations (like this Horizontally Spinning Rat).
 
-![Horizontally Spinning Rat](Ratte\horizontal_rotierende_Ratte.gif)
+![Horizontally Spinning Rat](https://github.com/laurentcasagrande/Python-Raytracer/blob/main/Ratte/horizontal_rotierende_Ratte.gif)
 
 ## Features
 
